@@ -25,4 +25,7 @@ public class ExternalFunction {
         }
         return arithmeticMean;
     }
+    public static String getSeparator() {
+        return "================================================================================";
+    }
 }

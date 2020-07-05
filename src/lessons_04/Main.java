@@ -38,6 +38,7 @@ public class Main {
             System.out.println(separator);
             System.out.println("Car information:");
             Task.car.showInfo();
+            Task.car.fillTank(Task.car.getFuelTank());
         }
         // fuel cost
         if(Task.fuelCost != 0){
@@ -60,9 +61,13 @@ public class Main {
                 System.out.printf("   Ride %.2f km. Fuel = %.2f litres. ", Task.routes[i].distance, Task.car.getFuelLevelAfterRide(Task.routes[i].distance));
                 double cost = 0;
                 if (i != Task.routes.length -1 ) {
+                    double litres = Task.car.getLitresNeedToFullTankAfterRide(Task.routes[i].distance);
                     cost = Task.car.getLitresNeedToFullTankAfterRide(Task.routes[i].distance) * Task.fuelCost;
+                    Task.car.Ride(Task.routes[i].distance);
+                    Task.car.fillTank(litres);
                 }
                 else {
+                    Task.car.Ride(Task.routes[i].distance);
                     cost = Task.car.getLitresNeedToRide(Task.routes[i].distance) * Task.fuelCost;
                 }
                 TotalCost += cost;

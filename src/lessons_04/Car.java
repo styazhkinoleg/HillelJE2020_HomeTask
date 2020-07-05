@@ -21,13 +21,19 @@ public class Car {
         return Math.max(0, this.fuel - this.getLitresNeedToRide(distance));
     }
     public double getLitresNeedToFullTankAfterRide(double distance){
-        return this.fuelTank - this.getFuelLevelAfterRide(distance);
+        return Math.max(0, this.fuelTank - this.getFuelLevelAfterRide(distance));
     }
     public double getLitresNeedToRide(double distance){
         return distance * this.fuelConsumption / 100;
     }
+    public double getFuelTank() {
+        return this.fuelTank;
+    }
     public double getDistanceRide(){
         return this.fuel * 100 / this.fuelConsumption;
+    }
+    public void Ride(double distance){
+        this.fuel -= this.getLitresNeedToRide(distance);
     }
     public void showInfo(){
         System.out.printf("Fuel tank =        %20.2f litres.\n", this.fuelTank);

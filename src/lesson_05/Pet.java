@@ -1,7 +1,7 @@
 package lesson_05;
 
 public class Pet extends Animal{
-    private String name;
+    private String name = "";
     private boolean vaccinated;
     public Pet() {
     }
@@ -23,6 +23,6 @@ public class Pet extends Animal{
     }
     @Override
     public String toString() {
-        return " my name is " + this.getName() + ".";
+        return (this.name != "") ? " my name is " + this.getName() + "." : "";
     }
 }

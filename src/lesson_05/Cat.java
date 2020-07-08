@@ -1,6 +1,8 @@
 package lesson_05;
 
 public class Cat extends Pet{
+    public Cat() {
+    }
     public Cat(int id, String name) {
         super(id, name);
     }

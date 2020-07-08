@@ -1,4 +1,4 @@
-package lessons_04;
+package lesson_04;
 
 import External.ExternalFunction;
 

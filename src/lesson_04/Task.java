@@ -1,4 +1,4 @@
-package lessons_04;
+package lesson_04;
 
 public class Task {
     public static Car car = null;

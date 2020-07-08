@@ -1,4 +1,4 @@
-package lessons_04;
+package lesson_04;
 
 public class Car {
     private double fuelTank;            // max litres

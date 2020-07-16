@@ -1,7 +1,6 @@
 package lesson_06;
 
 public class GuideDog extends Dog{
-
     private boolean trained;
 
     public GuideDog(int id, String name, boolean vaccinated, boolean trained) {

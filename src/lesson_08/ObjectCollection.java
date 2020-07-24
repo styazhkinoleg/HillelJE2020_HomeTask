@@ -6,55 +6,50 @@ public class ObjectCollection implements Collection{
 
     public ObjectCollection() {
         int n = 5;
-        this.initialization(n);
+        initialization(n);
     }
     public ObjectCollection(int n){
-        this.initialization(n);
-    }
-
-    private void initialization(int n){
-        this.ar = new Object[n];
-        this.count = 0;
+        initialization(n);
     }
 
     @Override
     public int size() {
-        return this.length();
+        return count;
     }
 
     @Override
     public boolean clear() {
-        this.initialization(0);
+        initialization(0);
         return true;
     }
 
     @Override
     public boolean add(Object o) {
-        return this.insertNewValue(-1,o);
+        return insertNewValue(-1,o);
     }
 
     @Override
     public boolean add(int index, Object o) {
-        return this.insertNewValue(index,o);
+        return insertNewValue(index,o);
     }
 
     @Override
     public boolean delete(Object o) {
-        int i = this.getIndex(o);
+        int i = getIndex(o);
         if (i != -1){
-            return this.arrayDelete(i);
+            return arrayDelete(i);
         }
         return false;
     }
 
     @Override
     public Object get(int index) {
-        return this.getByIndex(index);
+        return getByIndex(index);
     }
 
     @Override
     public boolean contain(Object o) {
-        return !(this.getIndex(o) == -1);
+        return !(getIndex(o) == -1);
     }
 
     @Override
@@ -62,30 +57,26 @@ public class ObjectCollection implements Collection{
         if (this == str) {
             return true;
         }
-        if (this.length() < str.size()) {
+        if (count < str.size()) {
             return false;
         }
         for (int i = 0; i < str.size(); i++){
-            if (!this.contain(str.get(i))){
+            if (!contain(str.get(i))){
                 return false;
             }
         }
         return true;
     }
 
-    private int length(){
-        return this.count;
-    }
-
     public void print() {
         int stringSize = 10;
-        for (int i = 0; i < this.length() ; i++) {
-            String str = this.getByIndex(i).toString();
+        for (int i = 0; i < count ; i++) {
+            String str = getByIndex(i).toString();
             System.out.print(str);
             if((i+1) % stringSize == 0){
                 System.out.println();
             }else {
-                if (i < this.length() - 1) {
+                if (i < count - 1) {
                     System.out.print(" ");
                 }
             }
@@ -93,9 +84,14 @@ public class ObjectCollection implements Collection{
         System.out.println();
     }
 
+    private void initialization(int n){
+        ar = new Object[n];
+        count = 0;
+    }
+
     private Object getByIndex(int i){
-        if (i>=0 && i<this.length()){
-            return this.ar[i];
+        if (i>=0 && i<count){
+            return ar[i];
         }
         else {
             System.out.println("Wrong index");
@@ -103,8 +99,8 @@ public class ObjectCollection implements Collection{
         }
     }
     private int getIndex(Object o){
-        for (int i = 0; i < this.length(); i++) {
-            if (this.getByIndex(i).equals(o)) {
+        for (int i = 0; i < count; i++) {
+            if (getByIndex(i).equals(o)) {
                 return i;
             }
         }
@@ -112,36 +108,36 @@ public class ObjectCollection implements Collection{
     }
 
     private boolean insertNewValue(int i, Object o){
-        if(this.length() == this.ar.length){
-            Object [] newAr = this.ar;
-            this.initialization(this.ar.length * 3 / 2);
+        if(count == ar.length){
+            Object [] newAr = ar;
+            initialization(ar.length * 3 / 2);
             for (Object ob: newAr){
-                this.add(ob);
+                add(ob);
             }
         }
-        return this.arrayInsert(i, o);
+        return arrayInsert(i, o);
     }
 
     private boolean arrayInsert(int i, Object o){
-        if (i==-1 || i == this.length()){
-            this.ar[this.length()] = o;
+        if (i==-1 || i == count){
+            ar[count] = o;
         }
         else
         {
-            for (int j = this.length(); j > i; j--) {
-                this.ar[j] = this.ar[j-1];
+            for (int j = count; j > i; j--) {
+                ar[j] = ar[j-1];
             }
-            this.ar[i] = o;
+            ar[i] = o;
         }
-        this.count++;
+        count++;
         return true;
     }
     private boolean arrayDelete(int i){
-        if (i>=0 && i<this.length()){
-            for (int j = i; j < this.length()-1; j++) {
-                this.ar[j] = this.ar[j+1];
+        if (i>=0 && i<count){
+            for (int j = i; j < count-1; j++) {
+                ar[j] = ar[j+1];
             }
-            this.count--;
+            count--;
             return true;
         }
         else{

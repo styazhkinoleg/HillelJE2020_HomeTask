@@ -61,7 +61,7 @@ public class ObjectCollection implements Collection{
             return false;
         }
         for (int i = 0; i < str.size(); i++){
-            if (!contain(str.get(i))){
+            if (get(i) != str.get(i)){
                 return false;
             }
         }
@@ -110,7 +110,7 @@ public class ObjectCollection implements Collection{
     private boolean insertNewValue(int i, Object o){
         if(count == ar.length){
             Object [] newAr = ar;
-            initialization(ar.length * 3 / 2);
+            initialization(ar.length * 3 / 2 + 1);
             for (Object ob: newAr){
                 add(ob);
             }

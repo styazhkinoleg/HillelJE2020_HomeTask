@@ -15,7 +15,6 @@ public class RockScissorsPaperGame {
     final private String nameLogFile = "log.txt";
 
     public RockScissorsPaperGame() {
-        initialization();
     }
 
     public void start() {

@@ -1,8 +1,6 @@
-package lesson_15.game;
+package lesson_15;
 
-import java.io.IOError;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class BattleShip {
     public static void main(String[] args) {

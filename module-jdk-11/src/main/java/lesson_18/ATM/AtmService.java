@@ -34,7 +34,7 @@ public class AtmService {
     public void Emulate(){
         Random random = new Random();
         for (int i = 0; i < 30; i++) {
-            makeOperation(cards.get(random.nextInt(10)), (byte) (random.nextInt(3) % 3));
+            makeOperation(cards.get(random.nextInt(cards.size()-1)), (byte) (random.nextInt(3) % 3));
         }
     }
 

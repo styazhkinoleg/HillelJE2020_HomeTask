@@ -1,7 +1,5 @@
 package lesson_21;
 
-import lesson_03.Array;
-
 import java.sql.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;

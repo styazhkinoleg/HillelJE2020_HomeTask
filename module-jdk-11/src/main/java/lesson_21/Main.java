@@ -40,7 +40,7 @@ public class Main {
     }
     private static String selectBegin(){
         return "select s.id as id, s.full_name as name, s.year_of_entry as year, g.name as gname " +
-                "from Students s left join Groups g on s.group_id = g.id";
+                "from Students s left join StudentGroups g on s.group_id = g.id";
     }
     private static String selectEnd(){
         return " order by full_name";
@@ -115,14 +115,14 @@ public class Main {
     }
     private static long getGroup(Connection connection, String name) throws SQLException{
         long group_id = -1;
-        String query = "select * from Groups where name like ? limit 1";
+        String query = "select * from StudentGroups where name like ? limit 1";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setString(1, name);
         ResultSet rs = statement.executeQuery();
         if (rs.next()) {
             group_id = rs.getLong("id");
         } else {
-            statement = connection.prepareStatement("insert into Groups (name) value (?)");
+            statement = connection.prepareStatement("insert into StudentGroups (name) value (?)");
             statement.setString(1, name);
             statement.executeUpdate();
             group_id = getGroup(connection, name);
